@@ -1,5 +1,5 @@
-const User = require('../models/User')
-const ApiError = require("../errors/ApiError")
+const User = require('../models/user')
+const ApiError = require("../errors/apiError")
 
 class UserService {
 
@@ -36,7 +36,7 @@ class UserService {
   static async createUser(username, password, roles) {
     try {
       const user = await User.create({ username, password, roles });
-      
+
       return user;
     } catch (err) {
       throw ApiError.internalError(err.message);
@@ -47,7 +47,7 @@ class UserService {
     try {
       const roles = ["admin", "user"];
       const user = await User.create({ username, password, roles, predefined: true });
-      
+
       return user;
     } catch (err) {
       throw ApiError.internalError(err.message);

@@ -1,8 +1,8 @@
-import { $authhost, $host } from './index';
+import { $authhost } from './index';
 
 
 export const getAllUsers = async () => {
-  const { data, status} = await $authhost.get('api/user')
+  const { data, status } = await $authhost.get('api/user')
   if (status === 200) {
     return data
   } else {
@@ -11,7 +11,7 @@ export const getAllUsers = async () => {
 }
 
 export const getOneUser = async (userId) => {
-  const { data, status} = await $authhost.get('api/user/' + userId)
+  const { data, status } = await $authhost.get('api/user/' + userId)
   if (status === 200) {
     return data
   } else {

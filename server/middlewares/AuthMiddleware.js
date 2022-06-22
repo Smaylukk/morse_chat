@@ -1,5 +1,5 @@
-const ApiError = require("../errors/ApiError");
-const { sign, createAccessToken, verifyAccessToken } = require("../services/TokenService");
+const ApiError = require("../errors/apiError");
+const { sign, createAccessToken, verifyAccessToken } = require("../services/tokenService");
 
 class AuthMiddleware {
   static async checkAuth(req, res, next) {

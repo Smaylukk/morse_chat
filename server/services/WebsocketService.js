@@ -1,5 +1,5 @@
 const uuid = require('uuid');
-const { decodeMorseText } = require('./MorseService');
+const { decodeMorseText } = require('./morseService');
 
 // збергіання підлючених користувачів
 const users = {}

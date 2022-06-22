@@ -1,5 +1,5 @@
 const bcrypt = require("bcryptjs");
-const ApiError = require("../errors/ApiError");
+const ApiError = require("../errors/apiError");
 
 const checkPassword = async (password, passwordHash) => {
   try {

@@ -6,7 +6,6 @@ import { encodeMorseSymbol } from '../../utils/morze'
 
 export const MessageForm = ({ username, sendMessage, disabled, recipientId }) => {
   const [text, setText] = useState('')
-  const [pass, setPass] = useState('')
 
   const handleChangeText = (e) => {
     const text = String(e.target.value)

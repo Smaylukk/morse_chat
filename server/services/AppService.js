@@ -1,6 +1,6 @@
-const User = require("../models/User");
-const { hashPassword } = require("./PasswordService");
-const UserService = require("./UserService")
+const User = require("../models/user");
+const { hashPassword } = require("./passwordService");
+const UserService = require("./userService")
 
 const appStart = async () => {
   const user = await UserService.getUserByName("admin");
@@ -12,8 +12,8 @@ const appStart = async () => {
 
 const createAdmin = async () => {
   const password = await hashPassword("admin");
-  const user = await UserService.createAdmin("admin", password );
-  
+  const user = await UserService.createAdmin("admin", password);
+
   return user;
 }
 

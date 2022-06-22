@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const config = require("../config/token");
-const ApiError = require("../errors/ApiError");
+const ApiError = require("../errors/apiError");
 
 const sign = async (playload, secretToken, options) => {
   try {

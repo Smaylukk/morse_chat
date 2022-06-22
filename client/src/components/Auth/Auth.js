@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React, { useContext, useState } from 'react';
 import { Button, Card, Container, Form, Row } from 'react-bootstrap';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { decodeToken, isExpired } from 'react-jwt'
 import { Context } from '../..';
 import { signIn } from '../../http/AuthAPI';
@@ -9,7 +9,6 @@ import { HOME_ROUTE } from '../../utils/routerPath';
 
 const Auth = observer(() => {
   const { store } = useContext(Context)
-  const location = useLocation()
   const navigate = useNavigate()
 
   const [username, setUsername] = useState('')
@@ -26,6 +25,7 @@ const Auth = observer(() => {
         navigate(HOME_ROUTE);
       }
     } catch (error) {
+      console.log(error)
       alert(error.message)
     }
   }
