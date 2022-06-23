@@ -24,15 +24,18 @@ const NavBar = observer(() => {
             Morse-chat {store.isAuth ? `- (${store.user.username})` : ''}
           </Navbar.Brand>
           <Nav className="ms-auto">
-            {store.isAuth &&
+            {store.isAuth
+              &&
               <>
-                <Button
-                  className='ms-2'
-                  variant={'outline-light'}
-                  onClick={() => navigate(ADMIN_ROUTE)}
-                >
-                  Адмін панель
-                </Button>
+                {store.user.roles.includes('admin') &&
+                  <Button
+                    className='ms-2'
+                    variant={'outline-light'}
+                    onClick={() => navigate(ADMIN_ROUTE)}
+                  >
+                    Адмін панель
+                  </Button>
+                }
                 <Button
                   className='ms-2'
                   variant={'outline-light'}

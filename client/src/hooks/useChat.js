@@ -1,10 +1,9 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 import io from 'socket.io-client'
 
-import { useBeforeUnload } from './useBeforeUnload'
 import { Context } from '../'
 
-const SERVER_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000'
+const SERVER_URL = process.env.REACT_APP_API_URL
 
 export const useChat = () => {
   const { store } = useContext(Context)
@@ -73,10 +72,6 @@ export const useChat = () => {
   const leaveChat = () => {
     socketRef.current.emit('user:rem', store.user.id)
   }
-  // відправляємо на сервер подію "user:leave" перед перезавантаденням сторінки
-  useBeforeUnload(() => {
-    leaveChat()
-  })
 
   // хук повертає користувачів, повідомлення, функції відправки повідомлення і виходу з чату
   return { users, messages, sendMessage, leaveChat }

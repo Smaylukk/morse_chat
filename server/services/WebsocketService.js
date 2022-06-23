@@ -6,7 +6,7 @@ const users = {}
 
 const onConnection = (io, socket) => {
   // повідомлення при підключенні
-  console.log('User connected')
+  console.log('Connecting ', socket.id)
 
   // методи генерації подій
   const addMessage = (message) => {
@@ -30,16 +30,26 @@ const onConnection = (io, socket) => {
   // додаємо користувача в наш масив
   const addUser = ({ username, userId }) => {
     console.log(username, userId);
-    if (!users[userId]) {
-      users[userId] = { username }
-    }
+    users[userId] = { username, socketId: socket.id }
+
     // відправляємо повідолмення з користувачами
     getUsers()
   }
 
   // обробка видалення користувача "Вихід із чату"
-  const removeUser = (userId) => {
-    delete users[userId];
+  const removeUser = (socketId) => {
+    let userId = null;
+    for (const user in users) {
+      if (users[user].socketId === socketId) {
+        userId = user;
+
+        break;
+      }
+    }
+    if (userId) {
+      delete users[userId];
+    }
+
     getUsers()
 
     console.log(`${userId} disconnected`)
@@ -52,7 +62,8 @@ const onConnection = (io, socket) => {
   socket.on('user:rem', removeUser)
 
   socket.on('disconnect', (reason) => {
-    console.log('disconnected')
+    removeUser(socket.id);
+    console.log('disconnected -', reason, socket.id)
   })
 
 }
