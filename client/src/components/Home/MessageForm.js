@@ -27,7 +27,7 @@ export const MessageForm = ({ username, sendMessage, disabled, recipientId }) =>
   }
 
   return (
-    <>
+    <div className='mt-1'>
       <Form onSubmit={handleSendMessage}>
         <Form.Group className='d-flex'>
           <Form.Control
@@ -41,6 +41,6 @@ export const MessageForm = ({ username, sendMessage, disabled, recipientId }) =>
           </Button>
         </Form.Group>
       </Form>
-    </>
+    </div>
   )
 }
